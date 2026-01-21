@@ -381,21 +381,17 @@ app.get('/admin', (req, res) => {
     res.sendFile(path.join(__dirname, 'admin', 'index.html'));
 });
 
-// Start server
-app.listen(PORT, () => {
+// Start server - Listen on 0.0.0.0 for Docker/container compatibility
+const HOST = process.env.HOST || '0.0.0.0';
+app.listen(PORT, HOST, () => {
     console.log(`
 ╔══════════════════════════════════════════════════════════════╗
 ║                    MAYER F&D - CMS Backend                   ║
 ╠══════════════════════════════════════════════════════════════╣
-║  Server running at: http://localhost:${PORT}                    ║
-║  Admin Panel:       http://localhost:${PORT}/admin              ║
+║  Server running at: http://${HOST}:${PORT}                      ║
+║  Admin Panel:       http://${HOST}:${PORT}/admin                ║
 ║                                                              ║
-║  Image Categories:                                           ║
-║    ${IMAGE_CATEGORIES.join(', ')}
-║                                                              ║
-║  Default Credentials:                                        ║
-║    Username: ${process.env.ADMIN_USERNAME || 'admin'}                                        ║
-║    Password: (see .env file)                                 ║
+║  Environment: ${process.env.NODE_ENV || 'development'}                                   ║
 ╚══════════════════════════════════════════════════════════════╝
     `);
 });
