@@ -1,0 +1,59 @@
+{
+    "hero": {
+        "label": "Eventos Exclusivos en CDMX",
+        "title": {
+            "line1": "Tu Evento es",
+            "line2": "Único"
+        },
+        "subtitle": {
+            "line1": "Nuestro Servicio",
+            "line2": "También lo es"
+        },
+        "description": "Somos tu solución integral en barra libre, coctelería de fantasía, mesa de dulces y catering para cualquier tipo de evento social en la Ciudad de México.",
+        "cta": {
+            "primary": "Explorar Servicios",
+            "secondary": "Cotizar Ahora"
+        },
+        "stats": {
+            "events": "+500",
+            "years": "10+",
+            "satisfaction": "100%"
+        },
+        "image": "/images/hero/hero-main.jpg"
+    },
+    "about": {
+        "label": "Sobre Nosotros",
+        "title": "Somos una empresa gastronómica, dinámica e innovadora",
+        "description": "Dedicada al servicio de los amantes del buen comer. Los menús son diseñados especialmente, de acuerdo a tus necesidades, con una atención personalizada y la mejor calidad en nuestros productos y presentaciones.",
+        "image": "/images/about/about-main.jpg",
+        "stats": {
+            "events": "+500",
+            "label": "Eventos"
+        },
+        "features": [
+            {
+                "icon": "🍸",
+                "title": "Coctelería de Fantasía",
+                "description": "Creaciones únicas para sorprender a tus invitados"
+            },
+            {
+                "icon": "👨‍🍳",
+                "title": "Chefs Expertos",
+                "description": "Equipo profesional certificado en gastronomía"
+            },
+            {
+                "icon": "✨",
+                "title": "Decoración Premium",
+                "description": "Diseños elegantes y modernos para cada evento"
+            }
+        ]
+    },
+    "contact": {
+        "phone1": "55 1484 6443",
+        "phone2": "6850 5314",
+        "email": "mayerfooddrink@gmail.com",
+        "location": "Azcapotzalco, CDMX, México",
+        "facebook": "https://es-es.facebook.com/mayerfoodanddrink/",
+        "whatsapp": "5514846443"
+    }
+}

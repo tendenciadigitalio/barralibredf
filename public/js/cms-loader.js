@@ -1,7 +1,8 @@
 // Mayer F&D - Dynamic Content Loader
 // Conecta el frontend con el CMS Backend
 
-const API_BASE_URL = 'http://localhost:3003';
+// Use relative URLs - works in both development and production
+const API_BASE_URL = '';
 
 // Helper function to resolve image URLs
 // Converts relative URLs to absolute URLs pointing to the backend

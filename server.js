@@ -20,8 +20,8 @@ const app = express();
 const PORT = process.env.PORT || 3003;
 const JWT_SECRET = process.env.JWT_SECRET || 'default-secret-change-me';
 
-// Paths
-const PUBLIC_DIR = path.join(__dirname, '..', 'public');
+// Paths - Structure: root/server.js, root/public/, root/admin/, root/data/
+const PUBLIC_DIR = path.join(__dirname, 'public');
 const IMAGES_DIR = path.join(PUBLIC_DIR, 'images');
 const DATA_DIR = path.join(__dirname, 'data');
 
