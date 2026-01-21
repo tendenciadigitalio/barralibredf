@@ -31,6 +31,9 @@ async function loadCMSContent() {
 
         const content = await response.json();
 
+        // Apply settings (logo, site name) first
+        applySettingsContent(content.settings);
+
         // Apply content to each section
         applyHeroContent(content.hero);
         applyAboutContent(content.about);
@@ -78,6 +81,45 @@ function setImage(selector, src) {
 }
 
 // ========== SECTION CONTENT APPLIERS ==========
+
+// Apply settings (logo, site name)
+function applySettingsContent(data) {
+    if (!data) return;
+
+    // Site name in navbar
+    const navLogo = document.querySelector('.navbar .logo');
+    if (navLogo && data.siteName) {
+        if (data.logo) {
+            // Use image logo
+            navLogo.innerHTML = `<img src="${resolveImageUrl(data.logo)}" alt="${data.siteName}" class="nav-logo-img">`;
+        } else {
+            // Use text logo
+            navLogo.innerHTML = `<span class="logo-main">${data.siteName}</span>${data.siteNameSecondary ? `<span class="logo-sub">${data.siteNameSecondary}</span>` : ''}`;
+        }
+    }
+
+    // Site name in footer
+    const footerLogo = document.querySelector('.footer-brand .logo');
+    if (footerLogo) {
+        const logoSrc = data.logoFooter || data.logo;
+        if (logoSrc) {
+            footerLogo.innerHTML = `<img src="${resolveImageUrl(logoSrc)}" alt="${data.siteName}" class="footer-logo-img">`;
+        } else if (data.siteName) {
+            footerLogo.innerHTML = `<span class="logo-main">${data.siteName}</span>${data.siteNameSecondary ? `<span class="logo-sub">${data.siteNameSecondary}</span>` : ''}`;
+        }
+    }
+
+    // Favicon
+    if (data.favicon) {
+        let favicon = document.querySelector("link[rel='icon']");
+        if (!favicon) {
+            favicon = document.createElement('link');
+            favicon.rel = 'icon';
+            document.head.appendChild(favicon);
+        }
+        favicon.href = resolveImageUrl(data.favicon);
+    }
+}
 
 function applyHeroContent(data) {
     if (!data) return;

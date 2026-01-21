@@ -3,7 +3,7 @@
 
 const API_URL = window.location.origin;
 let authToken = localStorage.getItem('mayer_admin_token');
-let currentSection = 'hero';
+let currentSection = 'settings';
 let contentData = {};
 
 // ========== INITIALIZATION ==========
@@ -119,6 +119,7 @@ function navigateToSection(section) {
     });
 
     const titles = {
+        settings: 'Configuración General',
         hero: 'Hero Section',
         about: 'Sobre Nosotros',
         services: 'Servicios',
@@ -140,6 +141,12 @@ function renderSection(section) {
 
     if (section === 'images') {
         renderImagesManager(contentArea);
+        return;
+    }
+
+    if (section === 'settings') {
+        renderSettingsEditor(contentArea, contentData.settings || {});
+        setupDragAndDrop();
         return;
     }
 
@@ -360,6 +367,54 @@ function removeImage(zoneId, dataPath) {
 }
 
 // ========== SECTION EDITORS ==========
+
+function renderSettingsEditor(container, data) {
+    container.innerHTML = `
+        <div class="editor-section">
+            <h3 class="editor-section-title">🏢 Identidad de Marca</h3>
+            <p class="editor-hint">Configura el logo y nombre que aparece en el navbar y footer</p>
+            
+            <div class="form-group">
+                <label>Nombre del Sitio</label>
+                <input type="text" value="${data.siteName || 'Mayer F&D'}" data-path="siteName">
+            </div>
+            
+            <div class="form-group">
+                <label>Nombre Secundario (opcional)</label>
+                <input type="text" value="${data.siteNameSecondary || ''}" data-path="siteNameSecondary">
+            </div>
+        </div>
+        
+        <div class="editor-section">
+            <h3 class="editor-section-title">🖼️ Logo del Sitio</h3>
+            <p class="editor-hint">Arrastra y suelta tu logo aquí. Formatos recomendados: PNG o SVG transparente</p>
+            
+            <div class="form-group">
+                <label>Logo Principal</label>
+                ${createImageDropZone('settings-logo', data.logo, 'logo', 'hero')}
+            </div>
+            
+            <div class="form-group">
+                <label>Logo en Footer (opcional)</label>
+                ${createImageDropZone('settings-logo-footer', data.logoFooter, 'logoFooter', 'hero')}
+            </div>
+        </div>
+        
+        <div class="editor-section">
+            <h3 class="editor-section-title">🎨 Colores (próximamente)</h3>
+            <p class="editor-hint">La personalización de colores estará disponible pronto</p>
+        </div>
+        
+        <div class="editor-section">
+            <h3 class="editor-section-title">📱 Favicon</h3>
+            <div class="form-group">
+                <label>Favicon del Sitio</label>
+                ${createImageDropZone('settings-favicon', data.favicon, 'favicon', 'hero')}
+            </div>
+        </div>
+    `;
+}
+
 function renderHeroEditor(container, data) {
     container.innerHTML = `
         <div class="editor-section">

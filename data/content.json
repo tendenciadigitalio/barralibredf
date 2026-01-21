@@ -1,4 +1,11 @@
 {
+    "settings": {
+        "siteName": "Mayer",
+        "siteNameSecondary": "F&D",
+        "logo": "",
+        "logoFooter": "",
+        "favicon": ""
+    },
     "hero": {
         "label": "Eventos Exclusivos en CDMX",
         "title": {
