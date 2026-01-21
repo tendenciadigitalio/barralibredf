@@ -10,33 +10,41 @@
         "label": "Eventos Exclusivos en CDMX",
         "title": {
             "line1": "Tu Evento es",
-            "line2": "Único"
-        },
-        "subtitle": {
-            "line1": "Nuestro Servicio",
-            "line2": "También lo es"
+            "line2": "Único",
+            "line3": "Nuestro Servicio",
+            "line4": "También lo es"
         },
         "description": "Somos tu solución integral en barra libre, coctelería de fantasía, mesa de dulces y catering para cualquier tipo de evento social en la Ciudad de México.",
         "cta": {
             "primary": "Explorar Servicios",
             "secondary": "Cotizar Ahora"
         },
-        "stats": {
-            "events": "+500",
-            "years": "10+",
-            "satisfaction": "100%"
-        },
-        "image": "/images/hero/hero-main.jpg"
+        "stats": [
+            {
+                "value": "+500",
+                "label": "Eventos Realizados"
+            },
+            {
+                "value": "10+",
+                "label": "Años de Experiencia"
+            },
+            {
+                "value": "100%",
+                "label": "Satisfacción"
+            }
+        ],
+        "images": {
+            "main": "",
+            "float1": "",
+            "float2": ""
+        }
     },
     "about": {
         "label": "Sobre Nosotros",
         "title": "Somos una empresa gastronómica, dinámica e innovadora",
+        "titleHighlight": "gastronómica",
         "description": "Dedicada al servicio de los amantes del buen comer. Los menús son diseñados especialmente, de acuerdo a tus necesidades, con una atención personalizada y la mejor calidad en nuestros productos y presentaciones.",
-        "image": "/images/about/about-main.jpg",
-        "stats": {
-            "events": "+500",
-            "label": "Eventos"
-        },
+        "image": "",
         "features": [
             {
                 "icon": "🍸",
@@ -55,12 +63,190 @@
             }
         ]
     },
+    "services": {
+        "label": "Nuestros Servicios",
+        "title": "Soluciones integrales para tu evento",
+        "titleHighlight": "integrales",
+        "description": "Ofrecemos servicios completos de catering y barra libre para todo tipo de eventos sociales.",
+        "items": [
+            {
+                "icon": "🍹",
+                "title": "Barra Libre",
+                "description": "Servicio premium de coctelería con bartenders profesionales"
+            },
+            {
+                "icon": "🍽️",
+                "title": "Catering",
+                "description": "Menús personalizados con ingredientes de primera calidad"
+            },
+            {
+                "icon": "🍬",
+                "title": "Mesa de Dulces",
+                "description": "Diseños temáticos y personalizados para tu evento"
+            },
+            {
+                "icon": "☕",
+                "title": "Coffee Break",
+                "description": "Servicio ejecutivo para reuniones corporativas"
+            }
+        ]
+    },
+    "catering": {
+        "label": "Catering Premium",
+        "title": "Experiencias gastronómicas únicas",
+        "titleHighlight": "únicas",
+        "description": "Creamos menús personalizados que deleitan a tus invitados.",
+        "image": "",
+        "items": [
+            {
+                "icon": "🥗",
+                "title": "Entradas Gourmet",
+                "description": "Bocadillos y aperitivos de autor"
+            },
+            {
+                "icon": "🍖",
+                "title": "Platos Fuertes",
+                "description": "Cortes premium y opciones variadas"
+            },
+            {
+                "icon": "🍰",
+                "title": "Postres",
+                "description": "Dulces artesanales y repostería fina"
+            }
+        ]
+    },
+    "events": {
+        "label": "Tipos de Eventos",
+        "title": "Hacemos realidad tu celebración",
+        "titleHighlight": "celebración",
+        "description": "Especializados en todo tipo de eventos sociales y corporativos.",
+        "items": [
+            {
+                "title": "Bodas",
+                "description": "Hacemos de tu día especial un momento inolvidable.",
+                "image": "/images/events/event_bodas_1768955415969.png",
+                "popular": true
+            },
+            {
+                "title": "XV Años",
+                "description": "Coctelería de fantasía y decoraciones mágicas.",
+                "image": "/images/events/event_xv_anos_1768955430421.png",
+                "popular": false
+            },
+            {
+                "title": "Graduaciones",
+                "description": "Celebra tus logros con el mejor servicio.",
+                "image": "/images/events/event_graduaciones_1768955444927.png",
+                "popular": false
+            },
+            {
+                "title": "Reuniones de Negocio",
+                "description": "Coffee break y servicio ejecutivo de primer nivel.",
+                "image": "/images/events/event_corporativos_1768955457454.png",
+                "popular": false
+            },
+            {
+                "title": "Fiestas",
+                "description": "Cualquier celebración merece nuestro toque especial.",
+                "image": "/images/events/event_fiestas_1768955470922.png",
+                "popular": false
+            },
+            {
+                "title": "Eventos Especiales",
+                "description": "Personalizamos cualquier tipo de evento.",
+                "image": "/images/events/event_especiales_1768955485458.png",
+                "popular": false
+            }
+        ]
+    },
+    "dulces": {
+        "label": "Mesa de Dulces",
+        "title": "Endulza tu evento",
+        "description": "Mesas temáticas con diseños únicos y personalizados para cada celebración.",
+        "image": "",
+        "features": [
+            "Diseños personalizados según temática",
+            "Dulces artesanales de primera calidad",
+            "Decoración incluida",
+            "Variedad de opciones para todos los gustos",
+            "Montaje y desmontaje incluido"
+        ]
+    },
+    "cocteleria": {
+        "label": "Coctelería de Fantasía",
+        "title": "Creaciones únicas para sorprender",
+        "description": "Bartenders profesionales y cocteles de autor para cualquier evento.",
+        "items": [
+            {
+                "title": "Cocteles Clásicos",
+                "description": "Mojitos, Margaritas, Piña Colada y más",
+                "image": ""
+            },
+            {
+                "title": "Cocteles de Autor",
+                "description": "Creaciones exclusivas de nuestros mixólogos",
+                "image": ""
+            },
+            {
+                "title": "Shots y Bebidas Especiales",
+                "description": "Variedad de opciones para animar la fiesta",
+                "image": ""
+            }
+        ]
+    },
+    "gallery": {
+        "label": "Galería",
+        "title": "Nuestro trabajo",
+        "items": [
+            {
+                "title": "Boda en Jardín",
+                "image": "",
+                "size": "big"
+            },
+            {
+                "title": "Mesa de Dulces",
+                "image": "",
+                "size": "normal"
+            },
+            {
+                "title": "Coctelería",
+                "image": "",
+                "size": "tall"
+            },
+            {
+                "title": "Evento Corporativo",
+                "image": "",
+                "size": "normal"
+            },
+            {
+                "title": "XV Años",
+                "image": "",
+                "size": "big"
+            },
+            {
+                "title": "Catering Premium",
+                "image": "",
+                "size": "normal"
+            }
+        ]
+    },
     "contact": {
-        "phone1": "55 1484 6443",
-        "phone2": "6850 5314",
+        "label": "Contacto",
+        "title": "¿Listo para tu evento?",
+        "titleHighlight": "evento",
+        "description": "Contáctanos y hagamos realidad tu celebración.",
+        "phones": [
+            "55 1484 6443",
+            "6850 5314"
+        ],
         "email": "mayerfooddrink@gmail.com",
         "location": "Azcapotzalco, CDMX, México",
         "facebook": "https://es-es.facebook.com/mayerfoodanddrink/",
         "whatsapp": "5514846443"
+    },
+    "footer": {
+        "description": "Tu solución integral en barra libre, coctelería de fantasía, mesa de dulces y catering para eventos en CDMX.",
+        "copyright": "© 2024 Mayer F&D. Todos los derechos reservados.",
+        "location": "Azcapotzalco, CDMX, México"
     }
 }
