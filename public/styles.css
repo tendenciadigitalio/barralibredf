@@ -183,7 +183,40 @@ body {
 .nav-contact {
     display: flex;
     align-items: center;
-    gap: 24px;
+    gap: 20px;
+}
+
+.nav-socials {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.nav-social-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--white-muted);
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.nav-social-icon:hover {
+    background: var(--gold);
+    border-color: var(--gold);
+    color: var(--black);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(204, 45, 105, 0.4);
+}
+
+.nav-social-icon svg {
+    width: 18px;
+    height: 18px;
 }
 
 .nav-tel {
@@ -209,6 +242,7 @@ body {
     letter-spacing: 1px;
     cursor: pointer;
     transition: var(--transition);
+    text-decoration: none;
 }
 
 .nav-btn:hover {
