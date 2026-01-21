@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mayer Food & Drink | Barra Libre Premium CDMX</title>
+    <meta name="description"
+        content="Servicio exclusivo de barra libre, coctelería de fantasía, mesa de dulces y catering premium para eventos en Ciudad de México. Tu evento es único.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <div class="navbar-inner">
+                <a href="#home" class="logo">
+                    <span class="logo-main">MAYER</span>
+                    <span class="logo-sub">F&D</span>
+                </a>
+                <ul class="nav-menu">
+                    <li><a href="#home" class="active">Inicio</a></li>
+                    <li><a href="#servicios">Servicios</a></li>
+                    <li><a href="#eventos">Eventos</a></li>
+                    <li><a href="#cocteleria">Coctelería</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                </ul>
+                <div class="nav-contact">
+                    <a href="tel:5514846443" class="nav-tel">55 1484 6443</a>
+                    <button class="nav-btn">Cotizar</button>
+                </div>
+                <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero section" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <span class="hero-label">Eventos Exclusivos en CDMX</span>
+                <h1 class="hero-title">
+                    Tu Evento es<br>
+                    <span>Único</span><br>
+                    Nuestro Servicio<br>
+                    <span>También lo es</span>
+                </h1>
+                <p class="hero-description">Somos tu solución integral en barra libre, coctelería de fantasía, mesa de
+                    dulces y
+                    catering para cualquier tipo de evento social en la Ciudad de México.</p>
+                <div class="hero-actions">
+                    <a href="#servicios" class="btn btn-gold">Explorar Servicios</a>
+                    <a href="#contacto" class="btn btn-outline">Cotizar Ahora</a>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat-item"><span class="stat-value">+500</span><span class="stat-label">EVENTOS</span>
+                    </div>
+                    <div class="stat-item"><span class="stat-value">10+</span><span class="stat-label">AÑOS</span></div>
+                    <div class="stat-item"><span class="stat-value">100%</span><span
+                            class="stat-label">SATISFACCIÓN</span></div>
+                </div>
+            </div>
+            <div class="hero-carousel">
+                <div class="carousel-container">
+                    <div class="carousel-track" id="heroCarouselTrack">
+                        <div class="carousel-slide active">
+                            <img src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?w=600&h=750&fit=crop"
+                                alt="Coctelería Premium">
+                        </div>
+                        <div class="carousel-slide">
+                            <img src="https://images.unsplash.com/photo-1470337458703-46ad1756a187?w=600&h=750&fit=crop"
+                                alt="Barra Libre">
+                        </div>
+                        <div class="carousel-slide">
+                            <img src="https://images.unsplash.com/photo-1551024506-0bccd828d307?w=600&h=750&fit=crop"
+                                alt="Mesa de Dulces">
+                        </div>
+                    </div>
+                    <div class="carousel-controls">
+                        <button class="carousel-btn prev" id="carouselPrev">‹</button>
+                        <div class="carousel-dots" id="carouselDots">
+                            <span class="dot active"></span>
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                        </div>
+                        <button class="carousel-btn next" id="carouselNext">›</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- About Section -->
+    <section class="about section" id="about">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1574966739987-65c01ed37b5e?w=600&h=700&fit=crop"
+                        alt="Equipo Mayer F&D">
+                    <div class="about-floating"><span class="about-floating-num">+500</span><span
+                            class="about-floating-text">Eventos</span></div>
+                </div>
+                <div class="about-content">
+                    <div class="section-header">
+                        <span class="section-label">Sobre Nosotros</span>
+                        <h2 class="section-title">Somos una empresa <span>gastronómica</span>, dinámica e
+                            innovadora</h2>
+                        <p class="section-description">Dedicada al servicio de los amantes del buen comer. Los menús son
+                            diseñados especialmente, de acuerdo a tus necesidades, con una atención personalizada y la
+                            mejor calidad en nuestros productos y presentaciones.</p>
+                    </div>
+                    <div class="about-features">
+                        <div class="feature-card">
+                            <span class="feature-icon">🍸</span>
+                            <h4>Coctelería de Fantasía</h4>
+                            <p>Creaciones únicas para sorprender a tus invitados</p>
+                        </div>
+                        <div class="feature-card">
+                            <span class="feature-icon">👨‍🍳</span>
+                            <h4>Chefs Expertos</h4>
+                            <p>Equipo profesional certificado en gastronomía</p>
+                        </div>
+                        <div class="feature-card">
+                            <span class="feature-icon">✨</span>
+                            <h4>Decoración Premium</h4>
+                            <p>Diseños elegantes y modernos para cada evento</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="section" id="servicios">
+        <div class="container">
+            <div class="section-header centered">
+                <span class="section-label">Nuestros Servicios</span>
+                <h2 class="section-title">Soluciones integrales para <span>tu evento</span></h2>
+                <p class="section-description">Desde pequeñas reuniones hasta el más completo y sofisticado evento
+                    social</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card featured">
+                    <span class="service-icon">🍹</span>
+                    <h3>Barra Libre de Bebidas</h3>
+                    <p>Servicio completo de bebidas premium con bartenders profesionales para tu evento.</p>
+                    <ul class="service-features">
+                        <li>Coctelería clásica y de autor</li>
+                        <li>Bebidas nacionales e importadas</li>
+                        <li>Servicio personalizado</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <span class="service-icon">🌈</span>
+                    <h3>Coctelería de Fantasía</h3>
+                    <p>Ideal para jóvenes y XV años. Bebidas coloridas, creativas y sin alcohol.</p>
+                </div>
+                <div class="service-card">
+                    <span class="service-icon">🥤</span>
+                    <h3>Malteadas y Smoothies</h3>
+                    <p>Barra especializada en bebidas refrescantes y nutritivas.</p>
+                </div>
+                <div class="service-card">
+                    <span class="service-icon">🥃</span>
+                    <h3>Barra de Shots</h3>
+                    <p>Shots atrevidos, divertidos y coloridos con carrito iluminado.</p>
+                </div>
+                <div class="service-card">
+                    <span class="service-icon">☕</span>
+                    <h3>Barra de Café</h3>
+                    <p>Cappuccino, Frappuccino, Espresso y más especialidades.</p>
+                </div>
+                <div class="service-card">
+                    <span class="service-icon">🍺</span>
+                    <h3>Barra de Cervezas</h3>
+                    <p>Cervezas nacionales, artesanales e importadas.</p>
+                </div>
+                <div class="service-card">
+                    <span class="service-icon">🥃</span>
+                    <h3>Tequilas y Mezcales</h3>
+                    <p>Mesa especial con tequilas y mezcales artesanales.</p>
+                </div>
+                <div class="service-card">
+                    <span class="service-icon">🍊</span>
+                    <h3>Aguas Frescas</h3>
+                    <p>Aguas de frutas 100% naturales y refrescantes.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Catering Section -->
+    <section class="section catering-section" id="catering">
+        <div class="container">
+            <div class="catering-grid">
+                <div class="catering-content">
+                    <div class="section-header">
+                        <span class="section-label">Catering & Banquetes</span>
+                        <h2 class="section-title">Servicio de <span>alimentos</span> para tu evento</h2>
+                        <p class="section-description">La calidad al alcance de todos, satisface a los más tradicionales
+                            y exigentes.</p>
+                    </div>
+                    <div class="catering-items">
+                        <div class="catering-item">
+                            <span class="catering-icon">🍽️</span>
+                            <div class="catering-info">
+                                <h4>Menú 3 y 4 tiempos</h4>
+                                <p>Entradas, platos fuertes, guarniciones y postres gourmet</p>
+                            </div>
+                        </div>
+                        <div class="catering-item">
+                            <span class="catering-icon">🥐</span>
+                            <div class="catering-info">
+                                <h4>Coffee Break & Brunch</h4>
+                                <p>Ideal para eventos corporativos y reuniones</p>
+                            </div>
+                        </div>
+                        <div class="catering-item">
+                            <span class="catering-icon">🍱</span>
+                            <div class="catering-info">
+                                <h4>Box Lunch</h4>
+                                <p>Opciones prácticas y deliciosas para llevar</p>
+                            </div>
+                        </div>
+                        <div class="catering-item">
+                            <span class="catering-icon">🧁</span>
+                            <div class="catering-info">
+                                <h4>Bocadillos y Canapés</h4>
+                                <p>Exquisitas piezas para cocktails y recepciones</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="catering-visual">
+                    <div class="catering-image"><img
+                            src="https://images.unsplash.com/photo-1555244162-803834f70033?w=600&h=500&fit=crop"
+                            alt="Servicio de Catering"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Events Section -->
+    <section class="events section" id="eventos">
+        <div class="container">
+            <div class="section-header centered">
+                <span class="section-label">Eventos</span>
+                <h2 class="section-title">Hacemos realidad <span>tu celebración</span></h2>
+                <p class="section-description">Desde pequeñas reuniones hasta el más sofisticado evento social</p>
+            </div>
+            <div class="events-grid">
+                <div class="event-card popular">
+                    <span class="popular-badge">Popular</span>
+                    <div class="event-image"><img
+                            src="http://localhost:3003/images/events/event_bodas_1768955415969.png" alt="Bodas"></div>
+                    <div class="event-content">
+                        <h3>Bodas</h3>
+                        <p>Hacemos de tu día especial un momento inolvidable.</p>
+                    </div>
+                </div>
+                <div class="event-card">
+                    <div class="event-image"><img
+                            src="http://localhost:3003/images/events/event_xv_anos_1768955430421.png" alt="XV Años">
+                    </div>
+                    <div class="event-content">
+                        <h3>XV Años</h3>
+                        <p>Coctelería de fantasía y decoraciones mágicas.</p>
+                    </div>
+                </div>
+                <div class="event-card">
+                    <div class="event-image"><img
+                            src="http://localhost:3003/images/events/event_graduaciones_1768955444927.png"
+                            alt="Graduaciones"></div>
+                    <div class="event-content">
+                        <h3>Graduaciones</h3>
+                        <p>Celebra tus logros con el mejor servicio.</p>
+                    </div>
+                </div>
+                <div class="event-card">
+                    <div class="event-image"><img
+                            src="http://localhost:3003/images/events/event_corporativos_1768955457454.png"
+                            alt="Corporativos"></div>
+                    <div class="event-content">
+                        <h3>Reuniones de Negocio</h3>
+                        <p>Coffee break y servicio ejecutivo de primer nivel.</p>
+                    </div>
+                </div>
+                <div class="event-card">
+                    <div class="event-image"><img
+                            src="http://localhost:3003/images/events/event_fiestas_1768955470922.png" alt="Fiestas">
+                    </div>
+                    <div class="event-content">
+                        <h3>Fiestas</h3>
+                        <p>Cualquier celebración merece nuestro toque especial.</p>
+                    </div>
+                </div>
+                <div class="event-card">
+                    <div class="event-image"><img
+                            src="http://localhost:3003/images/events/event_especiales_1768955485458.png"
+                            alt="Eventos Especiales"></div>
+                    <div class="event-content">
+                        <h3>Eventos Especiales</h3>
+                        <p>Personalizamos cualquier tipo de evento.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dulces Section -->
+    <section class="dulces section" id="dulces">
+        <div class="container">
+            <div class="dulces-grid">
+                <div class="dulces-image">
+                    <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&h=500&fit=crop"
+                        alt="Mesa de Dulces">
+                </div>
+                <div class="dulces-content">
+                    <div class="section-header">
+                        <span class="section-label">Elegante</span>
+                        <h2 class="section-title">Mesa de Dulces</h2>
+                        <p class="section-description">Somos tu mejor opción en creatividad y decoración. Creamos mesas
+                            de dulces
+                            temáticas y personalizadas que serán el centro de atención de tu evento.</p>
+                    </div>
+                    <ul class="dulces-features">
+                        <li><span class="check-icon">✓</span> Diseños personalizados para cada evento</li>
+                        <li><span class="check-icon">✓</span> Variedad de dulces y postres gourmet</li>
+                        <li><span class="check-icon">✓</span> Decoración temática incluida</li>
+                        <li><span class="check-icon">✓</span> Montaje y desmontaje profesional</li>
+                    </ul>
+                    <a href="#contacto" class="btn btn-gold">Solicitar Cotización</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cocteleria Section -->
+    <section class="section" id="cocteleria">
+        <div class="container">
+            <div class="section-header centered">
+                <span class="section-label">Sabores Únicos</span>
+                <h2 class="section-title">Coctelería y Shots</h2>
+                <p class="section-description">¡Imagínate recibir a tus invitados con una original barra de cockteles!
+                </p>
+            </div>
+            <div class="cocteleria-grid">
+                <div class="cocteleria-card">
+                    <div class="cocteleria-image"><img
+                            src="https://images.unsplash.com/photo-1536935338788-846bb9981813?w=400&h=500&fit=crop"
+                            alt="Cockteles"></div>
+                    <div class="cocteleria-content">
+                        <h3>Coctelería de Fantasía</h3>
+                        <p>Bebidas coloridas, creativas y sin alcohol. Ideal para XV años.</p>
+                    </div>
+                </div>
+                <div class="cocteleria-card">
+                    <div class="cocteleria-image"><img
+                            src="https://images.unsplash.com/photo-1570598912132-0ba1dc952b7d?w=400&h=500&fit=crop"
+                            alt="Shots"></div>
+                    <div class="cocteleria-content">
+                        <h3>Barra de Shots</h3>
+                        <p>Shots atrevidos, divertidos y coloridos para animar la fiesta.</p>
+                    </div>
+                </div>
+                <div class="cocteleria-card">
+                    <div class="cocteleria-image"><img
+                            src="https://images.unsplash.com/photo-1609951651556-5334e2706168?w=400&h=500&fit=crop"
+                            alt="Carrito"></div>
+                    <div class="cocteleria-content">
+                        <h3>Carrito Iluminado</h3>
+                        <p>Espectacular carrito de shots iluminado para la pista.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery section" id="galeria">
+        <div class="container">
+            <div class="section-header centered">
+                <span class="section-label">Portafolio</span>
+                <h2 class="section-title">Galería de Eventos</h2>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item big">
+                    <img src="https://images.unsplash.com/photo-1470337458703-46ad1756a187?w=800&h=600&fit=crop"
+                        alt="Evento 1">
+                    <div class="gallery-overlay"><span>Barra Premium</span></div>
+                </div>
+                <div class="gallery-item normal">
+                    <img src="https://images.unsplash.com/photo-1551024506-0bccd828d307?w=400&h=280&fit=crop"
+                        alt="Evento 2">
+                    <div class="gallery-overlay"><span>Mesa de Dulces</span></div>
+                </div>
+                <div class="gallery-item normal">
+                    <img src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?w=400&h=280&fit=crop"
+                        alt="Evento 3">
+                    <div class="gallery-overlay"><span>Coctelería</span></div>
+                </div>
+                <div class="gallery-item normal">
+                    <img src="https://images.unsplash.com/photo-1555244162-803834f70033?w=400&h=280&fit=crop"
+                        alt="Evento 4">
+                    <div class="gallery-overlay"><span>Catering</span></div>
+                </div>
+                <div class="gallery-item tall">
+                    <img src="https://images.unsplash.com/photo-1574966739987-65c01ed37b5e?w=400&h=580&fit=crop"
+                        alt="Evento 5">
+                    <div class="gallery-overlay"><span>Eventos</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section" id="contacto">
+        <div class="container">
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <div class="section-header">
+                        <span class="section-label">Contacto</span>
+                        <h2 class="section-title">Si lo que buscas no lo encuentras, <span>contáctanos</span></h2>
+                    </div>
+                    <p class="section-description">Para nosotros la imaginación no tiene límites. Seguro tendremos la
+                        opción exacta
+                        a tus necesidades.</p>
+                    <div class="contact-items">
+                        <div class="contact-item">
+                            <div class="contact-item-icon">📍</div>
+                            <div>
+                                <h4>Ubicación</h4>
+                                <p class="contact-location">Azcapotzalco, CDMX, México</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-item-icon">📧</div>
+                            <div>
+                                <h4>Email</h4>
+                                <p class="contact-email">mayerfooddrink@gmail.com</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-item-icon">📞</div>
+                            <div>
+                                <h4>Teléfonos</h4>
+                                <p class="contact-phones"><a href="tel:5514846443">55 1484 6443</a> | <a
+                                        href="tel:68505314">6850 5314</a></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="socials">
+                        <a href="https://es-es.facebook.com/mayerfoodanddrink/" class="social-btn facebook-link"
+                            target="_blank">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+                            </svg>
+                        </a>
+                        <a href="mailto:mayerfooddrink@gmail.com" class="social-btn">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                                <polyline points="22,6 12,13 2,6" />
+                            </svg>
+                        </a>
+                        <a href="https://wa.me/5514846443" class="social-btn" target="_blank">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="contact-form-box">
+                    <form class="contact-form" id="contactForm">
+                        <div class="form-field">
+                            <label for="name">Nombre Completo</label>
+                            <input type="text" id="name" name="name" placeholder="Tu nombre" required>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-field">
+                                <label for="email">Email</label>
+                                <input type="email" id="email" name="email" placeholder="tu@email.com" required>
+                            </div>
+                            <div class="form-field">
+                                <label for="phone">Teléfono</label>
+                                <input type="tel" id="phone" name="phone" placeholder="55 1234 5678">
+                            </div>
+                        </div>
+                        <div class="form-field">
+                            <label for="event">Tipo de Evento</label>
+                            <select id="event" name="event" required>
+                                <option value="">Selecciona...</option>
+                                <option value="boda">Boda</option>
+                                <option value="xv">XV Años</option>
+                                <option value="graduacion">Graduación</option>
+                                <option value="corporativo">Corporativo</option>
+                                <option value="fiesta">Fiesta</option>
+                                <option value="otro">Otro</option>
+                            </select>
+                        </div>
+                        <div class="form-field">
+                            <label for="message">Mensaje</label>
+                            <textarea id="message" name="message" placeholder="Cuéntanos sobre tu evento..."
+                                required></textarea>
+                        </div>
+                        <button type="submit" class="btn-submit">Enviar Mensaje
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z" />
+                            </svg>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="#home" class="logo"><span class="logo-main">MAYER</span><span
+                            class="logo-sub">F&D</span></a>
+                    <p class="footer-description">Tu evento es único, nuestro servicio también lo es. Atención integral
+                        para eventos sociales en la
+                        Ciudad de México.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Servicios</h4>
+                    <ul>
+                        <li><a href="#servicios">Barra Libre</a></li>
+                        <li><a href="#servicios">Coctelería</a></li>
+                        <li><a href="#servicios">Mesa de Dulces</a></li>
+                        <li><a href="#servicios">Catering</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Eventos</h4>
+                    <ul>
+                        <li><a href="#eventos">Bodas</a></li>
+                        <li><a href="#eventos">XV Años</a></li>
+                        <li><a href="#eventos">Graduaciones</a></li>
+                        <li><a href="#eventos">Corporativos</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contacto</h4>
+                    <ul>
+                        <li><a href="tel:5514846443">55 1484 6443</a></li>
+                        <li><a href="tel:68505314">6850 5314</a></li>
+                        <li><a href="mailto:mayerfooddrink@gmail.com">mayerfooddrink@gmail.com</a></li>
+                        <li><a href="#">Aviso de Privacidad</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p class="footer-copyright">© 2026 Mayer Food & Drink. Todos los derechos reservados.</p>
+                <p class="footer-location">Azcapotzalco, CDMX, México</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Button -->
+    <a href="https://wa.me/5514846443" class="whatsapp-float" target="_blank">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+            <path
+                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+        </svg>
+    </a>
+
+    <script src="script.js"></script>
+    <script src="js/carousel.js"></script>
+    <script src="js/cms-loader.js"></script>
+</body>
+
+</html>

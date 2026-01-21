@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mayer F&D - Panel de Administración</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="admin.css">
+</head>
+
+<body>
+    <!-- Login Screen -->
+    <div id="loginScreen" class="login-screen">
+        <div class="login-card">
+            <div class="login-header">
+                <h1>Mayer <span>F&D</span></h1>
+                <p>Panel de Administración</p>
+            </div>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="username">Usuario</label>
+                    <input type="text" id="username" name="username" placeholder="Ingresa tu usuario" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Contraseña</label>
+                    <input type="password" id="password" name="password" placeholder="Ingresa tu contraseña" required>
+                </div>
+                <button type="submit" class="btn-login">Iniciar Sesión</button>
+                <div id="loginError" class="error-message"></div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Admin Dashboard -->
+    <div id="adminDashboard" class="admin-dashboard hidden">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h2>Mayer <span>F&D</span></h2>
+                <p>CMS Admin</p>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="#" class="nav-item active" data-section="hero">
+                    <span class="nav-icon">🏠</span>
+                    Hero Section
+                </a>
+                <a href="#" class="nav-item" data-section="about">
+                    <span class="nav-icon">📋</span>
+                    Sobre Nosotros
+                </a>
+                <a href="#" class="nav-item" data-section="services">
+                    <span class="nav-icon">🍹</span>
+                    Servicios
+                </a>
+                <a href="#" class="nav-item" data-section="catering">
+                    <span class="nav-icon">🍽️</span>
+                    Catering
+                </a>
+                <a href="#" class="nav-item" data-section="events">
+                    <span class="nav-icon">🎉</span>
+                    Eventos
+                </a>
+                <a href="#" class="nav-item" data-section="dulces">
+                    <span class="nav-icon">🍬</span>
+                    Mesa de Dulces
+                </a>
+                <a href="#" class="nav-item" data-section="cocteleria">
+                    <span class="nav-icon">🍸</span>
+                    Coctelería
+                </a>
+                <a href="#" class="nav-item" data-section="gallery">
+                    <span class="nav-icon">📷</span>
+                    Galería
+                </a>
+                <a href="#" class="nav-item" data-section="contact">
+                    <span class="nav-icon">📞</span>
+                    Contacto
+                </a>
+                <a href="#" class="nav-item" data-section="images">
+                    <span class="nav-icon">🖼️</span>
+                    Imágenes
+                </a>
+            </nav>
+            <div class="sidebar-footer">
+                <button id="logoutBtn" class="btn-logout">Cerrar Sesión</button>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="main-header">
+                <h1 id="sectionTitle">Hero Section</h1>
+                <div class="header-actions">
+                    <button id="saveBtn" class="btn-save">💾 Guardar Cambios</button>
+                </div>
+            </header>
+
+            <div class="content-area" id="contentArea">
+                <!-- Dynamic content will be loaded here -->
+            </div>
+        </main>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast"></div>
+
+    <script src="admin.js"></script>
+</body>
+
+</html>
