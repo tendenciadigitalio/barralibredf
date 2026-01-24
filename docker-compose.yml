@@ -1,0 +1,22 @@
+# Docker Compose para desarrollo local y referencia de Dokploy
+version: '3.8'
+
+services:
+  mayer-cms:
+    build: .
+    ports:
+      - "3000:3000"
+    volumes:
+      # IMPORTANTE: Estos volúmenes persisten los datos entre redespliegues
+      - mayer-data:/app/data
+      - mayer-images:/app/public/images
+    environment:
+      - NODE_ENV=production
+    restart: unless-stopped
+
+volumes:
+  # Volúmenes nombrados para persistencia
+  mayer-data:
+    name: mayer-cms-data
+  mayer-images:
+    name: mayer-cms-images
