@@ -67,27 +67,49 @@
         "label": "Nuestros Servicios",
         "title": "Soluciones integrales para tu evento",
         "titleHighlight": "integrales",
-        "description": "Ofrecemos servicios completos de catering y barra libre para todo tipo de eventos sociales.",
+        "description": "Desde pequeñas reuniones hasta el más completo y sofisticado evento social.",
         "items": [
             {
-                "icon": "🍹",
-                "title": "Barra Libre",
-                "description": "Servicio premium de coctelería con bartenders profesionales"
+                "icon": "🥐",
+                "title": "Canapés",
+                "description": "Exquisitas piezas gourmet perfectas para recepciones y cocktails. Bocadillos elegantes que combinan sabores únicos.",
+                "image": "/images/services/canapes.jpg"
             },
             {
-                "icon": "🍽️",
-                "title": "Catering",
-                "description": "Menús personalizados con ingredientes de primera calidad"
+                "icon": "🍳",
+                "title": "Desayunos",
+                "description": "Menús completos para iniciar el día con energía. Opciones tradicionales y gourmet para eventos matutinos.",
+                "image": "/images/services/desayunos.jpg"
             },
             {
-                "icon": "🍬",
-                "title": "Mesa de Dulces",
-                "description": "Diseños temáticos y personalizados para tu evento"
+                "icon": "🥂",
+                "title": "Coctel de Canapés",
+                "description": "La combinación perfecta de elegancia y sabor. Servicio ideal para networking e inauguraciones.",
+                "image": "/images/services/coctel-canapes.jpg"
             },
             {
                 "icon": "☕",
                 "title": "Coffee Break",
-                "description": "Servicio ejecutivo para reuniones corporativas"
+                "description": "Ideal para eventos corporativos. Incluye bebidas calientes, jugos naturales, pan dulce y bocadillos.",
+                "image": "/images/services/coffee-break.jpg"
+            },
+            {
+                "icon": "🥡",
+                "title": "Box Lunch",
+                "description": "Opciones prácticas y deliciosas para llevar. Perfecto para capacitaciones y eventos con movilidad.",
+                "image": "/images/services/box-lunch.jpg"
+            },
+            {
+                "icon": "🍬",
+                "title": "Candy Bar",
+                "description": "Mesas de dulces temáticas y personalizadas. El centro de atención perfecto con golosinas premium.",
+                "image": "/images/services/candy-bar.jpg"
+            },
+            {
+                "icon": "🎁",
+                "title": "Torna Fiesta",
+                "description": "El cierre perfecto para tu celebración. Bolsitas personalizadas con dulces y recuerdos.",
+                "image": "/images/services/torna-fiesta.jpg"
             }
         ]
     },
