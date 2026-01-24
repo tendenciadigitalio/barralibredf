@@ -729,12 +729,46 @@ body {
 
 .service-card {
     position: relative;
-    padding: 40px 32px;
+    padding: 0;
     background: var(--black-card);
     border-radius: var(--radius);
     box-shadow: var(--neo-shadow);
     transition: var(--transition);
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.service-image {
+    width: 100%;
+    height: 180px;
+    overflow: hidden;
+    position: relative;
+}
+
+.service-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: var(--transition);
+}
+
+.service-card:hover .service-image img {
+    transform: scale(1.08);
+}
+
+.service-card h3,
+.service-card p {
+    padding-left: 24px;
+    padding-right: 24px;
+}
+
+.service-card h3 {
+    padding-top: 20px;
+}
+
+.service-card p {
+    padding-bottom: 24px;
 }
 
 .service-card::before {
