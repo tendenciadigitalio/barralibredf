@@ -564,23 +564,32 @@ function renderServicesEditor(container, data) {
     let servicesHtml = '';
     (data.items || []).forEach((service, index) => {
         servicesHtml += `
-            <div class="item-card">
+            <div class="item-card" data-service-index="${index}">
                 <div class="item-card-header">
-                    <span class="item-card-title">${service.icon} ${service.title}</span>
+                    <span class="item-card-title">${service.icon || '🍽️'} ${service.title || 'Nuevo Servicio'}</span>
+                    <button type="button" class="btn-delete-service" onclick="deleteService(${index})" title="Eliminar servicio">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M3 6h18M19 6v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6m3 0V4a2 2 0 012-2h4a2 2 0 012 2v2"/>
+                        </svg>
+                    </button>
+                </div>
+                <div class="form-group">
+                    <label>Imagen del Servicio</label>
+                    ${createImageDropZone(`service-${index}`, service.image, `items.${index}.image`, 'services')}
                 </div>
                 <div class="form-row">
                     <div class="form-group">
-                        <label>Icono</label>
-                        <input type="text" value="${service.icon}" data-path="items.${index}.icon">
+                        <label>Icono (emoji)</label>
+                        <input type="text" value="${service.icon || ''}" data-path="items.${index}.icon" placeholder="🍽️">
                     </div>
                     <div class="form-group">
                         <label>Título</label>
-                        <input type="text" value="${service.title}" data-path="items.${index}.title">
+                        <input type="text" value="${service.title || ''}" data-path="items.${index}.title" placeholder="Nombre del servicio">
                     </div>
                 </div>
                 <div class="form-group">
                     <label>Descripción</label>
-                    <textarea data-path="items.${index}.description">${service.description}</textarea>
+                    <textarea data-path="items.${index}.description" placeholder="Describe el servicio...">${service.description || ''}</textarea>
                 </div>
             </div>
         `;
@@ -588,26 +597,75 @@ function renderServicesEditor(container, data) {
 
     container.innerHTML = `
         <div class="editor-section">
-            <h3 class="editor-section-title">📝 Encabezado</h3>
+            <h3 class="editor-section-title">📝 Encabezado de la Sección</h3>
             <div class="form-group">
                 <label>Etiqueta</label>
-                <input type="text" value="${data.label || ''}" data-path="label">
+                <input type="text" value="${data.label || ''}" data-path="label" placeholder="Ej: Nuestros Servicios">
             </div>
             <div class="form-group">
                 <label>Título</label>
-                <input type="text" value="${data.title || ''}" data-path="title">
+                <input type="text" value="${data.title || ''}" data-path="title" placeholder="Ej: Soluciones integrales para tu evento">
             </div>
             <div class="form-group">
                 <label>Descripción</label>
-                <textarea data-path="description">${data.description || ''}</textarea>
+                <textarea data-path="description" placeholder="Descripción de la sección...">${data.description || ''}</textarea>
             </div>
         </div>
         
         <div class="editor-section">
-            <h3 class="editor-section-title">🍹 Servicios</h3>
-            <div class="items-list">${servicesHtml}</div>
+            <div class="section-header-with-button">
+                <h3 class="editor-section-title">🍽️ Servicios</h3>
+                <button type="button" class="btn-add-item" onclick="addNewService()">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="12" y1="5" x2="12" y2="19"></line>
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                    </svg>
+                    Agregar Servicio
+                </button>
+            </div>
+            <p class="section-help-text">Arrastra imágenes a cada servicio o haz clic para seleccionar. Puedes agregar, editar o eliminar servicios.</p>
+            <div class="items-list" id="servicesList">${servicesHtml}</div>
         </div>
     `;
+
+    // Re-setup drag and drop for new elements
+    setupAllDropZones();
+}
+
+// Add new service function
+function addNewService() {
+    if (!contentData.services) {
+        contentData.services = { items: [] };
+    }
+    if (!contentData.services.items) {
+        contentData.services.items = [];
+    }
+
+    contentData.services.items.push({
+        icon: '🍽️',
+        title: 'Nuevo Servicio',
+        description: 'Descripción del servicio...',
+        image: ''
+    });
+
+    // Re-render the section
+    const contentArea = document.getElementById('contentArea');
+    renderServicesEditor(contentArea, contentData.services);
+
+    showNotification('Servicio agregado. No olvides guardarlo.', 'info');
+}
+
+// Delete service function
+function deleteService(index) {
+    if (confirm('¿Estás seguro de que quieres eliminar este servicio?')) {
+        contentData.services.items.splice(index, 1);
+
+        // Re-render the section
+        const contentArea = document.getElementById('contentArea');
+        renderServicesEditor(contentArea, contentData.services);
+
+        showNotification('Servicio eliminado. Guarda los cambios.', 'warning');
+    }
 }
 
 function renderCateringEditor(container, data) {
