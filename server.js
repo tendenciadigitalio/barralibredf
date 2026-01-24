@@ -111,9 +111,10 @@ const writeContent = (content) => {
 };
 
 // Create hashed password for admin (done once at startup)
+// Credentials: User: MAyer / Pass: MAy3r2026$
 let adminPasswordHash = '';
 (async () => {
-    adminPasswordHash = await bcrypt.hash(process.env.ADMIN_PASSWORD || 'admin123', 10);
+    adminPasswordHash = await bcrypt.hash(process.env.ADMIN_PASSWORD || 'MAy3r2026$', 10);
 })();
 
 // ========== AUTH MIDDLEWARE ==========
@@ -142,7 +143,7 @@ app.post('/api/auth/login', async (req, res) => {
         return res.status(400).json({ error: 'Usuario y contraseña requeridos' });
     }
 
-    const adminUsername = process.env.ADMIN_USERNAME || 'admin';
+    const adminUsername = process.env.ADMIN_USERNAME || 'MAyer';
 
     if (username !== adminUsername) {
         return res.status(401).json({ error: 'Credenciales inválidas' });
