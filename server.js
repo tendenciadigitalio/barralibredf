@@ -110,12 +110,11 @@ const writeContent = (content) => {
     fs.writeFileSync(CONTENT_FILE, JSON.stringify(content, null, 2));
 };
 
-// Create hashed password for admin (done once at startup)
+// Create hashed password for admin
 // Credentials: User: MAyer / Pass: MAy3r2026$
-let adminPasswordHash = '';
-(async () => {
-    adminPasswordHash = await bcrypt.hash(process.env.ADMIN_PASSWORD || 'MAy3r2026$', 10);
-})();
+const ADMIN_USERNAME = 'MAyer';
+const ADMIN_PASSWORD = 'MAy3r2026$';
+const adminPasswordHash = bcrypt.hashSync(ADMIN_PASSWORD, 10);
 
 // ========== AUTH MIDDLEWARE ==========
 const authenticateToken = (req, res, next) => {
@@ -143,9 +142,7 @@ app.post('/api/auth/login', async (req, res) => {
         return res.status(400).json({ error: 'Usuario y contraseña requeridos' });
     }
 
-    const adminUsername = process.env.ADMIN_USERNAME || 'MAyer';
-
-    if (username !== adminUsername) {
+    if (username !== ADMIN_USERNAME) {
         return res.status(401).json({ error: 'Credenciales inválidas' });
     }
 
