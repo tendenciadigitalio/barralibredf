@@ -227,11 +227,23 @@ function setupDragAndDrop() {
     const dropZones = document.querySelectorAll('.image-drop-zone');
 
     dropZones.forEach(zone => {
+        // Remove existing listeners to avoid duplicates
+        zone.removeEventListener('dragover', handleDragOver);
+        zone.removeEventListener('dragleave', handleDragLeave);
+        zone.removeEventListener('drop', handleDrop);
+        zone.removeEventListener('click', handleZoneClick);
+
+        // Add listeners
         zone.addEventListener('dragover', handleDragOver);
         zone.addEventListener('dragleave', handleDragLeave);
         zone.addEventListener('drop', handleDrop);
         zone.addEventListener('click', handleZoneClick);
     });
+}
+
+// Alias for compatibility or centralized setup
+function setupAllDropZones() {
+    setupDragAndDrop();
 }
 
 function handleDragOver(e) {
@@ -629,7 +641,7 @@ function renderServicesEditor(container, data) {
     `;
 
     // Re-setup drag and drop for new elements
-    setupAllDropZones();
+    setupDragAndDrop();
 }
 
 // Add new service function
