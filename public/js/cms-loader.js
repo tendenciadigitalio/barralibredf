@@ -259,12 +259,20 @@ function applyServicesContent(data) {
         if (servicesGrid) {
             servicesGrid.innerHTML = data.items.map(service => `
                 <div class="service-card ${service.featured ? 'featured' : ''}">
-                    <span class="service-icon">${service.icon}</span>
+                    ${service.image ? `
+                        <div class="service-image">
+                            <img src="${resolveImageUrl(service.image)}" alt="${service.title}" loading="lazy">
+                        </div>
+                    ` : `
+                        <div class="service-icon-wrapper" style="padding: 30px 24px 0;">
+                            <span class="service-icon">${service.icon || '🍽️'}</span>
+                        </div>
+                    `}
                     <h3>${service.title}</h3>
                     <p>${service.description}</p>
-                    ${service.features ? `
-                        <ul class="service-features">
-                            ${service.features.map(f => `<li>${f}</li>`).join('')}
+                    ${service.features && service.features.length > 0 ? `
+                        <ul class="service-features" style="padding: 0 24px 24px; list-style: none;">
+                            ${service.features.map(f => `<li style="margin-bottom: 8px; font-size: 0.9rem; color: var(--gray-400); display: flex; align-items: center;"><span style="color: var(--gold); margin-right: 10px;">✓</span> ${f}</li>`).join('')}
                         </ul>
                     ` : ''}
                 </div>
