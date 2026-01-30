@@ -1,0 +1,45 @@
+{
+  "webhookUrl": "https://tdn8n.tendenciadigital.top/webhook/barralibred571eaba-b047-4645-a7d8-237e7b327dfa",
+  "position": "bottom-right",
+  "colors": {
+    "primary": "#c9a76c",
+    "primaryHover": "#d4b67d",
+    "secondary": "#1a1a1a",
+    "background": "#ffffff",
+    "text": "#333333",
+    "botBubble": "#f8f5f0",
+    "userBubble": "#c9a76c",
+    "botText": "#333333",
+    "userText": "#ffffff",
+    "headerGradient": "linear-gradient(135deg, #c9a76c 0%, #d4b67d 50%, #c9a76c 100%)"
+  },
+  "messages": {
+    "welcomeMessage": "¡Hola! 👋 Soy tu asistente de Mayer F&D. ¿En qué puedo ayudarte hoy?",
+    "typingIndicator": "Habla conmigo",
+    "headerTitle": "¡Chatea con nosotros!",
+    "headerSubtitle": "¡Estamos en línea!",
+    "inputPlaceholder": "Escribe tu mensaje...",
+    "poweredBy": "Mayer F&D"
+  },
+  "callToActions": [
+    {
+      "text": "📋 Solicitar Cotización",
+      "action": "cotizacion"
+    },
+    {
+      "text": "🍸 Barra Libre",
+      "action": "barra_libre"
+    },
+    {
+      "text": "🍬 Mesa de Dulces",
+      "action": "mesa_dulces"
+    },
+    {
+      "text": "📞 Contactar",
+      "action": "contactar"
+    }
+  ],
+  "botIcon": null,
+  "showTypingAnimation": true,
+  "autoOpenDelay": 0
+}

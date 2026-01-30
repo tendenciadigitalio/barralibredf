@@ -129,7 +129,8 @@ function navigateToSection(section) {
         cocteleria: 'Coctelería',
         gallery: 'Galería',
         contact: 'Contacto',
-        images: 'Gestión de Imágenes'
+        images: 'Gestión de Imágenes',
+        chatbot: 'Chat Widget AI'
     };
     document.getElementById('sectionTitle').textContent = titles[section] || section;
 
@@ -141,6 +142,11 @@ function renderSection(section) {
 
     if (section === 'images') {
         renderImagesManager(contentArea);
+        return;
+    }
+
+    if (section === 'chatbot') {
+        renderChatbotEditor(contentArea);
         return;
     }
 
@@ -1167,10 +1173,349 @@ function copyToClipboard(text) {
     });
 }
 
+// ========== CHATBOT EDITOR ==========
+let chatConfig = {};
+
+async function loadChatConfig() {
+    try {
+        const response = await fetch(`${API_URL}/api/chat-config`);
+        chatConfig = await response.json();
+        return chatConfig;
+    } catch (error) {
+        console.error('Error loading chat config:', error);
+        return {};
+    }
+}
+
+async function renderChatbotEditor(container) {
+    // Cargar configuración actual del chat
+    await loadChatConfig();
+
+    const data = chatConfig;
+    const colors = data.colors || {};
+    const messages = data.messages || {};
+    const callToActions = data.callToActions || [];
+
+    let ctaHtml = '';
+    callToActions.forEach((cta, index) => {
+        ctaHtml += `
+            <div class="item-card cta-item" data-cta-index="${index}">
+                <div class="item-card-header">
+                    <span class="item-card-title">${cta.text}</span>
+                    <button type="button" class="btn-delete-service" onclick="deleteCta(${index})" title="Eliminar CTA">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M3 6h18M19 6v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6m3 0V4a2 2 0 012-2h4a2 2 0 012 2v2"/>
+                        </svg>
+                    </button>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Texto del Botón</label>
+                        <input type="text" value="${cta.text}" data-chat-path="callToActions.${index}.text" placeholder="📋 Solicitar Cotización">
+                    </div>
+                    <div class="form-group">
+                        <label>Acción (ID)</label>
+                        <input type="text" value="${cta.action}" data-chat-path="callToActions.${index}.action" placeholder="cotizacion">
+                    </div>
+                </div>
+            </div>
+        `;
+    });
+
+    container.innerHTML = `
+        <div class="editor-section">
+            <h3 class="editor-section-title">🌐 Conexión del Webhook</h3>
+            <p class="editor-hint">URL del webhook donde se enviarán los mensajes del chat</p>
+            <div class="form-group">
+                <label>URL del Webhook</label>
+                <input type="text" value="${data.webhookUrl || ''}" data-chat-path="webhookUrl" placeholder="https://tu-webhook.com/endpoint">
+            </div>
+        </div>
+
+        <div class="editor-section">
+            <h3 class="editor-section-title">📍 Posición del Widget</h3>
+            <div class="form-group">
+                <label>Posición en pantalla</label>
+                <select data-chat-path="position">
+                    <option value="bottom-right" ${data.position === 'bottom-right' ? 'selected' : ''}>Abajo Derecha</option>
+                    <option value="bottom-left" ${data.position === 'bottom-left' ? 'selected' : ''}>Abajo Izquierda</option>
+                    <option value="top-right" ${data.position === 'top-right' ? 'selected' : ''}>Arriba Derecha</option>
+                    <option value="top-left" ${data.position === 'top-left' ? 'selected' : ''}>Arriba Izquierda</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="editor-section">
+            <h3 class="editor-section-title">🎨 Colores del Widget</h3>
+            <p class="editor-hint">Personaliza los colores del chat para que coincidan con tu marca</p>
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Color Primario</label>
+                    <div class="color-input-group">
+                        <input type="color" value="${colors.primary || '#c9a76c'}" data-chat-path="colors.primary" class="color-picker">
+                        <input type="text" value="${colors.primary || '#c9a76c'}" data-chat-path="colors.primary" class="color-text" placeholder="#c9a76c">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Color Secundario</label>
+                    <div class="color-input-group">
+                        <input type="color" value="${colors.secondary || '#1a1a1a'}" data-chat-path="colors.secondary" class="color-picker">
+                        <input type="text" value="${colors.secondary || '#1a1a1a'}" data-chat-path="colors.secondary" class="color-text" placeholder="#1a1a1a">
+                    </div>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Color de Burbuja del Bot</label>
+                    <div class="color-input-group">
+                        <input type="color" value="${colors.botBubble || '#f8f5f0'}" data-chat-path="colors.botBubble" class="color-picker">
+                        <input type="text" value="${colors.botBubble || '#f8f5f0'}" data-chat-path="colors.botBubble" class="color-text" placeholder="#f8f5f0">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Color de Burbuja del Usuario</label>
+                    <div class="color-input-group">
+                        <input type="color" value="${colors.userBubble || '#c9a76c'}" data-chat-path="colors.userBubble" class="color-picker">
+                        <input type="text" value="${colors.userBubble || '#c9a76c'}" data-chat-path="colors.userBubble" class="color-text" placeholder="#c9a76c">
+                    </div>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Color Texto del Bot</label>
+                    <div class="color-input-group">
+                        <input type="color" value="${colors.botText || '#333333'}" data-chat-path="colors.botText" class="color-picker">
+                        <input type="text" value="${colors.botText || '#333333'}" data-chat-path="colors.botText" class="color-text" placeholder="#333333">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Color Texto del Usuario</label>
+                    <div class="color-input-group">
+                        <input type="color" value="${colors.userText || '#ffffff'}" data-chat-path="colors.userText" class="color-picker">
+                        <input type="text" value="${colors.userText || '#ffffff'}" data-chat-path="colors.userText" class="color-text" placeholder="#ffffff">
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Gradiente del Header</label>
+                <input type="text" value="${colors.headerGradient || 'linear-gradient(135deg, #c9a76c 0%, #d4b67d 50%, #c9a76c 100%)'}" data-chat-path="colors.headerGradient" placeholder="linear-gradient(135deg, #c9a76c 0%, #d4b67d 50%, #c9a76c 100%)">
+            </div>
+        </div>
+
+        <div class="editor-section">
+            <h3 class="editor-section-title">💬 Mensajes del Chat</h3>
+            <div class="form-group">
+                <label>Mensaje de Bienvenida</label>
+                <textarea data-chat-path="messages.welcomeMessage" rows="3" placeholder="¡Hola! 👋 Soy tu asistente...">${messages.welcomeMessage || ''}</textarea>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Indicador de Typing (Animación)</label>
+                    <input type="text" value="${messages.typingIndicator || ''}" data-chat-path="messages.typingIndicator" placeholder="Habla conmigo">
+                </div>
+                <div class="form-group">
+                    <label>Texto "Powered by"</label>
+                    <input type="text" value="${messages.poweredBy || ''}" data-chat-path="messages.poweredBy" placeholder="Mayer F&D">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Título del Header</label>
+                    <input type="text" value="${messages.headerTitle || ''}" data-chat-path="messages.headerTitle" placeholder="¡Chatea con nosotros!">
+                </div>
+                <div class="form-group">
+                    <label>Subtítulo del Header</label>
+                    <input type="text" value="${messages.headerSubtitle || ''}" data-chat-path="messages.headerSubtitle" placeholder="¡Estamos en línea!">
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Placeholder del Input</label>
+                <input type="text" value="${messages.inputPlaceholder || ''}" data-chat-path="messages.inputPlaceholder" placeholder="Escribe tu mensaje...">
+            </div>
+        </div>
+
+        <div class="editor-section">
+            <div class="section-header-with-button">
+                <h3 class="editor-section-title">🎯 Call-to-Actions (Botones Rápidos)</h3>
+                <button type="button" class="btn-add-item" onclick="addNewCta()">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="12" y1="5" x2="12" y2="19"></line>
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                    </svg>
+                    Agregar CTA
+                </button>
+            </div>
+            <p class="editor-hint">Botones de acceso rápido que aparecen en el chat</p>
+            <div class="items-list" id="ctaList">${ctaHtml}</div>
+        </div>
+
+        <div class="editor-section">
+            <h3 class="editor-section-title">⚙️ Opciones Adicionales</h3>
+            <div class="form-row">
+                <div class="form-group">
+                    <label class="checkbox-label">
+                        <input type="checkbox" ${data.showTypingAnimation ? 'checked' : ''} data-chat-path="showTypingAnimation">
+                        Mostrar animación de typing
+                    </label>
+                </div>
+                <div class="form-group">
+                    <label>Auto-abrir después de (ms, 0 = desactivado)</label>
+                    <input type="number" value="${data.autoOpenDelay || 0}" data-chat-path="autoOpenDelay" min="0" step="1000" placeholder="0">
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Icono del Bot (URL de imagen, dejar vacío para usar icono por defecto)</label>
+                <input type="text" value="${data.botIcon || ''}" data-chat-path="botIcon" placeholder="https://ejemplo.com/bot-avatar.png">
+            </div>
+        </div>
+
+        <div class="editor-section actions-section">
+            <button type="button" class="btn-reset-chat" onclick="resetChatConfig()">
+                🔄 Restablecer a valores por defecto
+            </button>
+        </div>
+    `;
+
+    // Sincronizar color pickers con inputs de texto
+    setupColorSyncListeners();
+}
+
+function setupColorSyncListeners() {
+    const colorPickers = document.querySelectorAll('.color-picker');
+    colorPickers.forEach(picker => {
+        picker.addEventListener('input', (e) => {
+            const textInput = e.target.parentElement.querySelector('.color-text');
+            if (textInput) {
+                textInput.value = e.target.value;
+            }
+        });
+    });
+
+    const colorTexts = document.querySelectorAll('.color-text');
+    colorTexts.forEach(textInput => {
+        textInput.addEventListener('input', (e) => {
+            const picker = e.target.parentElement.querySelector('.color-picker');
+            if (picker && /^#[0-9A-Fa-f]{6}$/.test(e.target.value)) {
+                picker.value = e.target.value;
+            }
+        });
+    });
+}
+
+function addNewCta() {
+    if (!chatConfig.callToActions) {
+        chatConfig.callToActions = [];
+    }
+
+    chatConfig.callToActions.push({
+        text: '✨ Nuevo Botón',
+        action: 'nuevo_action'
+    });
+
+    // Re-render
+    const contentArea = document.getElementById('contentArea');
+    renderChatbotEditor(contentArea);
+
+    showToast('CTA agregado. No olvides guardar los cambios.', 'info');
+}
+
+function deleteCta(index) {
+    if (confirm('¿Estás seguro de que quieres eliminar este CTA?')) {
+        chatConfig.callToActions.splice(index, 1);
+
+        // Re-render
+        const contentArea = document.getElementById('contentArea');
+        renderChatbotEditor(contentArea);
+
+        showToast('CTA eliminado. Guarda los cambios.', 'warning');
+    }
+}
+
+async function saveChatConfig() {
+    const contentArea = document.getElementById('contentArea');
+    const inputs = contentArea.querySelectorAll('[data-chat-path]');
+    const updates = {};
+
+    inputs.forEach(input => {
+        const path = input.dataset.chatPath;
+        let value;
+
+        if (input.type === 'checkbox') {
+            value = input.checked;
+        } else if (input.type === 'number') {
+            value = parseInt(input.value) || 0;
+        } else {
+            value = input.value;
+        }
+
+        // Solo usar el primer input para paths duplicados (color pickers)
+        if (input.classList.contains('color-text')) {
+            setNestedValue(updates, path, value);
+        } else if (!input.classList.contains('color-picker') || !contentArea.querySelector(`.color-text[data-chat-path="${path}"]`)) {
+            setNestedValue(updates, path, value);
+        }
+    });
+
+    try {
+        const response = await fetch(`${API_URL}/api/chat-config`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${authToken}`
+            },
+            body: JSON.stringify(updates)
+        });
+
+        const data = await response.json();
+
+        if (response.ok) {
+            chatConfig = data.data;
+            showToast('Configuración del chat guardada correctamente', 'success');
+        } else {
+            showToast(data.error || 'Error al guardar', 'error');
+        }
+    } catch (error) {
+        showToast('Error de conexión', 'error');
+    }
+}
+
+async function resetChatConfig() {
+    if (!confirm('¿Estás seguro de que quieres restablecer la configuración del chat a los valores por defecto? Esta acción no se puede deshacer.')) {
+        return;
+    }
+
+    try {
+        const response = await fetch(`${API_URL}/api/chat-config/reset`, {
+            method: 'POST',
+            headers: {
+                'Authorization': `Bearer ${authToken}`
+            }
+        });
+
+        const data = await response.json();
+
+        if (response.ok) {
+            chatConfig = data.data;
+            const contentArea = document.getElementById('contentArea');
+            renderChatbotEditor(contentArea);
+            showToast('Configuración del chat restablecida', 'success');
+        } else {
+            showToast(data.error || 'Error al restablecer', 'error');
+        }
+    } catch (error) {
+        showToast('Error de conexión', 'error');
+    }
+}
+
 // ========== SAVE FUNCTIONALITY ==========
 async function saveCurrentSection() {
     if (currentSection === 'images') {
         showToast('No hay cambios que guardar en esta sección', 'warning');
+        return;
+    }
+
+    if (currentSection === 'chatbot') {
+        await saveChatConfig();
         return;
     }
 

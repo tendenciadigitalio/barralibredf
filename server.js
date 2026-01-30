@@ -374,6 +374,113 @@ app.get('/api/categories', (req, res) => {
     res.json(IMAGE_CATEGORIES);
 });
 
+// ========== CHAT WIDGET CONFIGURATION ==========
+const CHAT_CONFIG_FILE = path.join(DATA_DIR, 'chat-config.json');
+
+// Default chat configuration
+const defaultChatConfig = {
+    webhookUrl: 'https://tdn8n.tendenciadigital.top/webhook/barralibred571eaba-b047-4645-a7d8-237e7b327dfa',
+    position: 'bottom-right', // bottom-right, bottom-left, top-right, top-left
+    colors: {
+        primary: '#c9a76c',
+        primaryHover: '#d4b67d',
+        secondary: '#1a1a1a',
+        background: '#ffffff',
+        text: '#333333',
+        botBubble: '#f8f5f0',
+        userBubble: '#c9a76c',
+        botText: '#333333',
+        userText: '#ffffff',
+        headerGradient: 'linear-gradient(135deg, #c9a76c 0%, #d4b67d 50%, #c9a76c 100%)'
+    },
+    messages: {
+        welcomeMessage: '¡Hola! 👋 Soy tu asistente de Mayer F&D. ¿En qué puedo ayudarte hoy?',
+        typingIndicator: 'Habla conmigo',
+        headerTitle: '¡Chatea con nosotros!',
+        headerSubtitle: '¡Estamos en línea!',
+        inputPlaceholder: 'Escribe tu mensaje...',
+        poweredBy: 'Mayer F&D'
+    },
+    callToActions: [
+        { text: '📋 Solicitar Cotización', action: 'cotizacion' },
+        { text: '🍸 Barra Libre', action: 'barra_libre' },
+        { text: '🍬 Mesa de Dulces', action: 'mesa_dulces' },
+        { text: '📞 Contactar', action: 'contactar' }
+    ],
+    botIcon: null,
+    showTypingAnimation: true,
+    autoOpenDelay: 0
+};
+
+// Read chat configuration
+const readChatConfig = () => {
+    try {
+        if (fs.existsSync(CHAT_CONFIG_FILE)) {
+            return JSON.parse(fs.readFileSync(CHAT_CONFIG_FILE, 'utf-8'));
+        }
+        // Create default config if doesn't exist
+        writeChatConfig(defaultChatConfig);
+        return defaultChatConfig;
+    } catch (error) {
+        console.error('Error reading chat config:', error);
+        return defaultChatConfig;
+    }
+};
+
+// Write chat configuration
+const writeChatConfig = (config) => {
+    fs.writeFileSync(CHAT_CONFIG_FILE, JSON.stringify(config, null, 2));
+};
+
+// Get chat configuration (public)
+app.get('/api/chat-config', (req, res) => {
+    const config = readChatConfig();
+    res.json(config);
+});
+
+// Update chat configuration (protected)
+app.put('/api/chat-config', authenticateToken, (req, res) => {
+    const currentConfig = readChatConfig();
+    const updatedConfig = { ...currentConfig, ...req.body };
+    writeChatConfig(updatedConfig);
+    res.json({
+        message: 'Configuración del chat actualizada correctamente',
+        data: updatedConfig
+    });
+});
+
+// Update specific chat config section (protected)
+app.patch('/api/chat-config', authenticateToken, (req, res) => {
+    const currentConfig = readChatConfig();
+
+    // Deep merge para objetos anidados
+    const deepMerge = (target, source) => {
+        for (const key of Object.keys(source)) {
+            if (source[key] instanceof Object && key in target && !(source[key] instanceof Array)) {
+                Object.assign(source[key], deepMerge(target[key], source[key]));
+            }
+        }
+        return { ...target, ...source };
+    };
+
+    const updatedConfig = deepMerge(currentConfig, req.body);
+    writeChatConfig(updatedConfig);
+
+    res.json({
+        message: 'Configuración del chat actualizada correctamente',
+        data: updatedConfig
+    });
+});
+
+// Reset chat configuration to defaults (protected)
+app.post('/api/chat-config/reset', authenticateToken, (req, res) => {
+    writeChatConfig(defaultChatConfig);
+    res.json({
+        message: 'Configuración del chat restablecida a valores por defecto',
+        data: defaultChatConfig
+    });
+});
+
 // ========== ADMIN PANEL ROUTE ==========
 app.get('/admin', (req, res) => {
     res.sendFile(path.join(__dirname, 'admin', 'index.html'));
