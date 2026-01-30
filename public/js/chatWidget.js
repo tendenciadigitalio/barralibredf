@@ -198,7 +198,6 @@ class MayerChatWidget {
             /* Typing Animation Bubble */
             .mayer-typing-bubble {
                 position: absolute;
-                right: 80px;
                 top: 50%;
                 transform: translateY(-50%);
                 background: ${colors.primary};
@@ -213,21 +212,43 @@ class MayerChatWidget {
                 transition: opacity 0.3s ease;
             }
 
+            /* Typing bubble positioning based on container position */
+            .position-bottom-right .mayer-typing-bubble,
+            .position-top-right .mayer-typing-bubble {
+                right: 80px;
+            }
+
+            .position-bottom-left .mayer-typing-bubble,
+            .position-top-left .mayer-typing-bubble {
+                left: 80px;
+            }
+
             .mayer-typing-bubble.visible {
                 opacity: 1;
             }
 
+            /* Typing bubble arrow */
             .mayer-typing-bubble::after {
                 content: '';
                 position: absolute;
-                right: -8px;
                 top: 50%;
                 transform: translateY(-50%);
                 width: 0;
                 height: 0;
                 border-top: 8px solid transparent;
                 border-bottom: 8px solid transparent;
+            }
+
+            .position-bottom-right .mayer-typing-bubble::after,
+            .position-top-right .mayer-typing-bubble::after {
+                right: -8px;
                 border-left: 8px solid ${colors.primary};
+            }
+
+            .position-bottom-left .mayer-typing-bubble::after,
+            .position-top-left .mayer-typing-bubble::after {
+                left: -8px;
+                border-right: 8px solid ${colors.primary};
             }
 
             .mayer-typing-cursor {
@@ -237,8 +258,6 @@ class MayerChatWidget {
             /* Chat Window */
             .mayer-chat-window {
                 position: absolute;
-                bottom: 80px;
-                right: 0;
                 width: 360px;
                 height: 500px;
                 background: ${colors.background};
@@ -251,6 +270,27 @@ class MayerChatWidget {
                 transform: translateY(20px) scale(0.95);
                 pointer-events: none;
                 transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            }
+
+            /* Chat window positioning based on container position */
+            .position-bottom-right .mayer-chat-window {
+                bottom: 80px;
+                right: 0;
+            }
+
+            .position-bottom-left .mayer-chat-window {
+                bottom: 80px;
+                left: 0;
+            }
+
+            .position-top-right .mayer-chat-window {
+                top: 80px;
+                right: 0;
+            }
+
+            .position-top-left .mayer-chat-window {
+                top: 80px;
+                left: 0;
             }
 
             .mayer-chat-window.open {
