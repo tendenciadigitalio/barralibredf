@@ -612,21 +612,60 @@ class MayerChatWidget {
 
             /* Mobile Responsive */
             @media (max-width: 480px) {
+                /* Container positioning - always bottom-right on mobile */
+                .mayer-chat-container {
+                    bottom: 16px !important;
+                    right: 16px !important;
+                    left: auto !important;
+                    top: auto !important;
+                }
+
+                /* Chat window - full width on mobile */
                 .mayer-chat-window {
-                    width: calc(100vw - 48px);
-                    height: calc(100vh - 200px);
-                    max-height: 500px;
+                    width: calc(100vw - 32px);
+                    height: calc(100vh - 120px);
+                    max-height: 600px;
+                    bottom: 80px !important;
+                    right: 0 !important;
+                    left: 0 !important;
+                    top: auto !important;
                 }
 
-                .mayer-chat-container.position-bottom-right,
-                .mayer-chat-container.position-bottom-left {
-                    bottom: 16px;
-                    right: 16px;
-                    left: auto;
+                /* Chat button - smaller on mobile */
+                .mayer-chat-button {
+                    width: 56px;
+                    height: 56px;
                 }
 
+                .mayer-chat-button svg {
+                    width: 24px;
+                    height: 24px;
+                }
+
+                /* Hide typing bubble on mobile */
                 .mayer-typing-bubble {
-                    display: none;
+                    display: none !important;
+                }
+
+                /* Adjust header padding */
+                .mayer-chat-header {
+                    padding: 16px;
+                }
+
+                /* Adjust messages padding */
+                .mayer-chat-messages {
+                    padding: 16px;
+                }
+
+                /* Adjust input area */
+                .mayer-chat-input-area {
+                    padding: 12px 16px;
+                }
+
+                /* Smaller send button */
+                .mayer-chat-send {
+                    width: 40px;
+                    height: 40px;
                 }
             }
         `;
