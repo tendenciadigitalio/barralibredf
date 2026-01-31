@@ -19,13 +19,22 @@ document.addEventListener('DOMContentLoaded', () => {
     // Mobile menu toggle
     const hamburger = document.getElementById('hamburger');
     const navMenu = document.querySelector('.nav-menu');
+    const body = document.body;
 
-    if (hamburger) {
+    if (hamburger && navMenu) {
         hamburger.addEventListener('click', () => {
             hamburger.classList.toggle('active');
-            if (navMenu) {
-                navMenu.style.display = navMenu.style.display === 'flex' ? 'none' : 'flex';
-            }
+            navMenu.classList.toggle('active');
+            body.classList.toggle('menu-open');
+        });
+
+        // Close menu when clicking a link
+        navMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+                body.classList.remove('menu-open');
+            });
         });
     }
 

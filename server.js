@@ -381,6 +381,7 @@ const CHAT_CONFIG_FILE = path.join(DATA_DIR, 'chat-config.json');
 const defaultChatConfig = {
     webhookUrl: 'https://tdn8n.tendenciadigital.top/webhook/barralibred571eaba-b047-4645-a7d8-237e7b327dfa',
     position: 'bottom-right', // bottom-right, bottom-left, top-right, top-left
+    mobilePosition: 'bottom-right', // bottom-right, bottom-left, top-right, top-left
     colors: {
         primary: '#c9a76c',
         primaryHover: '#d4b67d',

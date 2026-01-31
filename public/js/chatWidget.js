@@ -8,7 +8,8 @@ class MayerChatWidget {
         // Configuración por defecto (se sobrescribe con datos del backend)
         this.config = {
             webhookUrl: 'https://tdn8n.tendenciadigital.top/webhook/barralibred571eaba-b047-4645-a7d8-237e7b327dfa',
-            position: 'bottom-right', // bottom-right, bottom-left, top-right, top-left
+            position: 'bottom-right',
+            mobilePosition: 'bottom-right',
             colors: {
                 primary: '#c9a76c',
                 primaryHover: '#d4b67d',
@@ -141,6 +142,37 @@ class MayerChatWidget {
             .mayer-chat-container.position-top-left {
                 top: 24px;
                 left: 24px;
+            }
+
+            /* Mobile position variants */
+            @media (max-width: 480px) {
+                .mayer-chat-container.mobile-position-bottom-right {
+                    bottom: 16px !important;
+                    right: 16px !important;
+                    left: auto !important;
+                    top: auto !important;
+                }
+
+                .mayer-chat-container.mobile-position-bottom-left {
+                    bottom: 16px !important;
+                    left: 16px !important;
+                    right: auto !important;
+                    top: auto !important;
+                }
+
+                .mayer-chat-container.mobile-position-top-right {
+                    top: 16px !important;
+                    right: 16px !important;
+                    left: auto !important;
+                    bottom: auto !important;
+                }
+
+                .mayer-chat-container.mobile-position-top-left {
+                    top: 16px !important;
+                    left: 16px !important;
+                    right: auto !important;
+                    bottom: auto !important;
+                }
             }
 
             /* Chat Button */
@@ -297,6 +329,27 @@ class MayerChatWidget {
                 opacity: 1;
                 transform: translateY(0) scale(1);
                 pointer-events: all;
+            }
+
+            /* Mobile chat window adjustments based on position */
+            @media (max-width: 480px) {
+                .mobile-position-bottom-right .mayer-chat-window,
+                .mobile-position-bottom-left .mayer-chat-window {
+                    bottom: 70px !important;
+                    top: auto !important;
+                    transform: translateY(10px) scale(0.95);
+                }
+
+                .mobile-position-top-right .mayer-chat-window,
+                .mobile-position-top-left .mayer-chat-window {
+                    top: 70px !important;
+                    bottom: auto !important;
+                    transform: translateY(-10px) scale(0.95);
+                }
+
+                .mayer-chat-window.open {
+                    transform: translateY(0) scale(1) !important;
+                }
             }
 
             /* Chat Header */
@@ -612,12 +665,8 @@ class MayerChatWidget {
 
             /* Mobile Responsive */
             @media (max-width: 480px) {
-                /* Container positioning - always bottom-right on mobile */
                 .mayer-chat-container {
-                    bottom: 16px !important;
-                    right: 16px !important;
-                    left: auto !important;
-                    top: auto !important;
+                    /* Base mobile transition */
                 }
 
                 /* Chat window - full width on mobile */
@@ -625,10 +674,8 @@ class MayerChatWidget {
                     width: calc(100vw - 32px);
                     height: calc(100vh - 120px);
                     max-height: 600px;
-                    bottom: 80px !important;
                     right: 0 !important;
                     left: 0 !important;
-                    top: auto !important;
                 }
 
                 /* Chat button - smaller on mobile */
@@ -675,7 +722,7 @@ class MayerChatWidget {
     createWidget() {
         // Container principal
         this.widgetContainer = document.createElement('div');
-        this.widgetContainer.className = `mayer-chat-container position-${this.config.position}`;
+        this.widgetContainer.className = `mayer-chat-container position-${this.config.position} mobile-position-${this.config.mobilePosition || 'bottom-right'}`;
         this.widgetContainer.innerHTML = `
             <!-- Chat Window -->
             <div class="mayer-chat-window">

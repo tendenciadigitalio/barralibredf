@@ -123,6 +123,7 @@ body {
     font-weight: 600;
     background: var(--gradient-gold);
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
@@ -259,6 +260,7 @@ body {
     border: none;
     cursor: pointer;
     padding: 8px;
+    z-index: 1001;
 }
 
 .hamburger span {
@@ -266,6 +268,22 @@ body {
     height: 2px;
     background: var(--white);
     transition: var(--transition);
+}
+
+.hamburger.active span:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+}
+
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+}
+
+body.menu-open {
+    overflow: hidden;
 }
 
 /* ========== HERO SECTION ========== */
@@ -290,6 +308,19 @@ body {
     padding: 120px 0 80px;
     position: relative;
     overflow: hidden;
+}
+
+.hero .container {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+}
+
+.hero-content {
+    max-width: 600px;
+    z-index: 2;
 }
 
 .hero::before {
@@ -446,15 +477,18 @@ body {
 
 /* ========== HERO CAROUSEL ========== */
 .hero-carousel {
-    position: absolute;
-    right: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    height: 100%;
-    width: 45%;
+    position: relative;
+    width: 100%;
+    z-index: 1;
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+@media (max-width: 768px) {
+    .hero-carousel {
+        margin: 0 0 32px 0;
+    }
 }
 
 .carousel-container {
@@ -1630,7 +1664,41 @@ body {
         --section-gap: 100px;
     }
 
-    .nav-menu,
+    .nav-menu {
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background: rgba(10, 5, 10, 0.98);
+        backdrop-filter: blur(20px);
+        padding: 120px 40px;
+        gap: 32px;
+        align-items: center;
+        justify-content: flex-start;
+        z-index: 1000;
+        transform: translateY(-100%);
+        transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .nav-menu.active {
+        display: flex;
+        transform: translateY(0);
+    }
+
+    .nav-menu li {
+        width: 100%;
+        text-align: center;
+    }
+
+    .nav-menu a {
+        font-size: 1.5rem;
+        display: block;
+        padding: 10px;
+    }
+
     .nav-contact {
         display: none;
     }
@@ -1735,15 +1803,15 @@ body {
     }
 
     .hero-content {
-        display: flex;
-        flex-direction: column;
-        order: 1;
-        max-width: 100%;
+        display: contents;
+        /* Hace que los hijos (título, label, etc) participen en el flex del container */
     }
 
     .hero-label {
         order: 1;
         margin-bottom: 20px;
+        text-align: center;
+        width: 100%;
     }
 
     .hero-title {
@@ -1751,19 +1819,16 @@ body {
         font-size: 2rem;
         line-height: 1.2;
         margin-bottom: 32px;
+        text-align: center;
+        width: 100%;
     }
 
     /* Carousel in mobile - show as block element */
     .hero-carousel {
-        order: 3 !important;
-        position: relative !important;
-        transform: none !important;
-        width: 100% !important;
-        height: auto !important;
-        margin: 0 -20px 32px !important;
-        top: auto !important;
-        right: auto !important;
-        left: auto !important;
+        order: 3;
+        width: 100%;
+        height: auto;
+        margin: 0 -20px 32px;
     }
 
     .carousel-container {
@@ -1780,15 +1845,22 @@ body {
         font-size: 1rem;
         line-height: 1.6;
         margin-bottom: 32px;
+        text-align: center;
     }
 
     .hero-actions {
         order: 5;
         margin-bottom: 40px;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
     }
 
     .hero-stats {
         order: 6;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
 
     .services-grid,
@@ -1819,99 +1891,5 @@ body {
         flex-direction: column;
         gap: 12px;
         text-align: center;
-    }
-}
-
-@media (max-width: 480px) {
-    .navbar {
-        padding: 16px 0;
-    }
-
-    .logo-main {
-        font-size: 1.5rem;
-    }
-
-    .section-header {
-        margin-bottom: 48px;
-    }
-
-    .section-title {
-        font-size: 1.8rem;
-    }
-
-    .about-floating {
-        position: relative;
-        bottom: auto;
-        right: auto;
-        margin-top: 20px;
-    }
-
-    .catering-badge {
-        position: relative;
-        top: auto;
-        right: auto;
-        margin-top: 16px;
-    }
-
-    /* Hero Section Mobile Reorganization */
-    .hero .container {
-        display: flex;
-        flex-direction: column;
-    }
-
-    .hero-content {
-        display: flex;
-        flex-direction: column;
-        order: 1;
-        max-width: 100%;
-    }
-
-    .hero-label {
-        order: 1;
-        margin-bottom: 20px;
-    }
-
-    .hero-title {
-        order: 2;
-        font-size: 2rem;
-        line-height: 1.2;
-        margin-bottom: 32px;
-    }
-
-    /* Carousel in mobile - show as block element */
-    .hero-carousel {
-        order: 3;
-        position: relative !important;
-        transform: none !important;
-        width: 100% !important;
-        height: auto !important;
-        margin: 0 -20px 32px !important;
-        top: auto !important;
-        right: auto !important;
-    }
-
-    .carousel-container {
-        border-radius: 0;
-        max-width: none;
-    }
-
-    .carousel-slide {
-        height: 400px;
-    }
-
-    .hero-description {
-        order: 4;
-        font-size: 1rem;
-        line-height: 1.6;
-        margin-bottom: 32px;
-    }
-
-    .hero-actions {
-        order: 5;
-        margin-bottom: 40px;
-    }
-
-    .hero-stats {
-        order: 6;
     }
 }

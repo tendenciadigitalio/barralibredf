@@ -1234,14 +1234,25 @@ async function renderChatbotEditor(container) {
 
         <div class="editor-section">
             <h3 class="editor-section-title">📍 Posición del Widget</h3>
-            <div class="form-group">
-                <label>Posición en pantalla</label>
-                <select data-chat-path="position">
-                    <option value="bottom-right" ${data.position === 'bottom-right' ? 'selected' : ''}>Abajo Derecha</option>
-                    <option value="bottom-left" ${data.position === 'bottom-left' ? 'selected' : ''}>Abajo Izquierda</option>
-                    <option value="top-right" ${data.position === 'top-right' ? 'selected' : ''}>Arriba Derecha</option>
-                    <option value="top-left" ${data.position === 'top-left' ? 'selected' : ''}>Arriba Izquierda</option>
-                </select>
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Posición en Escritorio</label>
+                    <select data-chat-path="position">
+                        <option value="bottom-right" ${data.position === 'bottom-right' ? 'selected' : ''}>Abajo Derecha</option>
+                        <option value="bottom-left" ${data.position === 'bottom-left' ? 'selected' : ''}>Abajo Izquierda</option>
+                        <option value="top-right" ${data.position === 'top-right' ? 'selected' : ''}>Arriba Derecha</option>
+                        <option value="top-left" ${data.position === 'top-left' ? 'selected' : ''}>Arriba Izquierda</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Posición en Móvil</label>
+                    <select data-chat-path="mobilePosition">
+                        <option value="bottom-right" ${data.mobilePosition === 'bottom-right' ? 'selected' : ''}>Abajo Derecha</option>
+                        <option value="bottom-left" ${data.mobilePosition === 'bottom-left' ? 'selected' : ''}>Abajo Izquierda</option>
+                        <option value="top-right" ${data.mobilePosition === 'top-right' ? 'selected' : ''}>Arriba Derecha</option>
+                        <option value="top-left" ${data.mobilePosition === 'top-left' ? 'selected' : ''}>Arriba Izquierda</option>
+                    </select>
+                </div>
             </div>
         </div>
 
